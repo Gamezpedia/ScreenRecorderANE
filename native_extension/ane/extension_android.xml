@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension xmlns="http://ns.adobe.com/air/extension/19.0">
+    <id>com.tuarua.ScreenRecorderANE</id>
+	<name>Screen Recorder ANE Android</name>
+    <versionNumber>0.0.1</versionNumber>
+    <platforms>
+		<platform name="Android-ARM"> 
+           <applicationDeployment>
+				<nativeLibrary>classes.jar</nativeLibrary>
+				<initializer>com.tuarua.ScreenRecorderANE</initializer>
+				<finalizer>com.tuarua.ScreenRecorderANE</finalizer>
+			</applicationDeployment>
+        </platform>
+		<platform name="Android-x86"> 
+           <applicationDeployment>
+				<nativeLibrary>classes.jar</nativeLibrary>
+				<initializer>com.tuarua.ScreenRecorderANE</initializer>
+				<finalizer>com.tuarua.ScreenRecorderANE</finalizer>
+			</applicationDeployment>
+        </platform>
+    </platforms>
+</extension>
