@@ -22,7 +22,7 @@ import java.util.Map;
 import static android.content.Context.MEDIA_PROJECTION_SERVICE;
 
 /**
- * Created by Eoin Landy on 23/12/2016.
+ * Created by Eoin Landy Tua Rua Ltd. on 23/12/2016.
  * https://www.truiton.com/2015/05/capture-record-android-screen-using-mediaprojection-apis/
  */
 public class ScreenRecorderANEContext extends FREContext {
@@ -58,7 +58,7 @@ public class ScreenRecorderANEContext extends FREContext {
     private class isSupported implements FREFunction {
         @Override
         public FREObject call(FREContext freContext, FREObject[] freObjects) {
-            return aneHelper.getFREObjectFromBool((android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP));
+            return aneHelper.getFREObject((android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP));
         }
     }
 
@@ -79,14 +79,14 @@ public class ScreenRecorderANEContext extends FREContext {
             FREObject savePathAS = freObjects[1];
             FREObject fileNameAS = freObjects[2];
 
-            Settings.width = aneHelper.getIntFromFREObject(aneHelper.getFREObjectProperty(settingsProps, "width"));
-            Settings.height = aneHelper.getIntFromFREObject(aneHelper.getFREObjectProperty(settingsProps, "height"));
-            Settings.bitrate = aneHelper.getIntFromFREObject(aneHelper.getFREObjectProperty(settingsProps, "bitrate"));
-            Settings.dpi = aneHelper.getIntFromFREObject(aneHelper.getFREObjectProperty(settingsProps, "dpi"));
-            Settings.fps = aneHelper.getIntFromFREObject(aneHelper.getFREObjectProperty(settingsProps, "fps"));
+            Settings.width = aneHelper.getInt(aneHelper.getProperty(settingsProps, "width"));
+            Settings.height = aneHelper.getInt(aneHelper.getProperty(settingsProps, "height"));
+            Settings.bitrate = aneHelper.getInt(aneHelper.getProperty(settingsProps, "bitrate"));
+            Settings.dpi = aneHelper.getInt(aneHelper.getProperty(settingsProps, "dpi"));
+            Settings.fps = aneHelper.getInt(aneHelper.getProperty(settingsProps, "fps"));
 
-            savePath = aneHelper.getStringFromFREObject(savePathAS);
-            fileName = aneHelper.getStringFromFREObject(fileNameAS);
+            savePath = aneHelper.getString(savePathAS);
+            fileName = aneHelper.getString(fileNameAS);
 
             Intent captureIntent = mediaProjectionManager.createScreenCaptureIntent();
             AndroidActivityWrapper.GetAndroidActivityWrapper().addActivityResultListener(this);
@@ -131,7 +131,7 @@ public class ScreenRecorderANEContext extends FREContext {
     private class setLogLevel implements FREFunction {
         @Override
         public FREObject call(FREContext freContext, FREObject[] freObjects) {
-            logLevel = aneHelper.getIntFromFREObject(freObjects[0]);
+            logLevel = aneHelper.getInt(freObjects[0]);
             return null;
         }
     }
